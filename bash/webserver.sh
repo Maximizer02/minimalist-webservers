@@ -1,10 +1,8 @@
 #! /bin/bash
-
 enable accept;
-
 while true
 do
-		accept -b 127.0.0.1 -v file 8080;
+		accept -b 0.0.0.0 -v file 8080;
 		while read -u $file -r line
 		do
 				echo $line;

@@ -23,7 +23,7 @@ int create_socket(){
 void bind_socket(int socket_fd){
         struct sockaddr_in adress;
         adress.sin_family = AF_INET;
-        adress.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
+        adress.sin_addr.s_addr = htonl(INADDR_ANY);
         adress.sin_port = htons(8080);
         
         printf("Binding Socket...\n");
@@ -54,6 +54,7 @@ void accept_connection(int socket_fd){
 
 int main(){
         int socket_fd = create_socket();
+		printf("hilfe\n");
         bind_socket(socket_fd);
         listen_socket(socket_fd);
         while(1)

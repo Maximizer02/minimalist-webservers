@@ -27,7 +27,7 @@ fn handle_connection(con_info:(TcpStream, SocketAddr)){
 }
 
 fn main(){
-    let adress = "127.0.0.1";
+    let adress = "0.0.0.0";
     let port = "8080";
     loop{
         let listener = bind_listener(adress, port);

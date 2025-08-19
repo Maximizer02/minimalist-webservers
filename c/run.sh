@@ -1,3 +1,2 @@
 #! /bin/bash
-gcc webserver.c -o webserver;
-./webserver;
+docker run -p 8080:8080 --name mws-c mws-c
