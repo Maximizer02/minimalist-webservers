@@ -22,7 +22,7 @@ fn handle_connection(con_info:(TcpStream, SocketAddr)){
     println!("Request Length: {length}");
     println!("{buffer_string}");
     let response = 
-        "HTTP/1.1 200 OK\r\ncontent-type: text/html\r\n\r\n<h1>Hello World</h1>\r\n".as_bytes();
+        "HTTP/1.1 200 OK\r\ncontent-type: text/html\r\n\r\n<h1>Hello from Rust!</h1>\r\n".as_bytes();
     let _ = stream.write(response);
 }
 

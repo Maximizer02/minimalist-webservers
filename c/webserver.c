@@ -47,7 +47,7 @@ void accept_connection(int socket_fd){
         read(connection_fd, buffer, sizeof(buffer));
         printf("%s\n", buffer);
  
-        char status_line[] = "HTTP/1.1 200 OK\r\ncontent-type: text/html\r\n\r\n<h1>Hello World!</h1>\r\n";
+        char status_line[] = "HTTP/1.1 200 OK\r\ncontent-type: text/html\r\n\r\n<h1>Hello from C!</h1>\r\n";
         write(connection_fd, status_line, strlen(status_line));
         close(connection_fd);
 }

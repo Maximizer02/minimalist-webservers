@@ -1,4 +1,3 @@
 #! /bin/bash
-
-rustc web.rs -o web;
-./web;
+rustc webserver.rs -o webserver;
+./webserver;

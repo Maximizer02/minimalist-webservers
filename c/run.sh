@@ -1,3 +1,3 @@
 #! /bin/bash
-gcc web.c -o web;
-./web;
+gcc webserver.c -o webserver;
+./webserver;
