@@ -1,2 +1,2 @@
 #! /bin/bash
-docker run -p 6902:8080 --name mws-rust mws-rust
+docker run -p 6902:8080 --name mws-rust -d mws-rust
