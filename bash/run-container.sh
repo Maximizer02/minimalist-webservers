@@ -1,2 +1,2 @@
 #! /bin/bash
-docker run -p 8080:8080 --name mws-bash mws-bash
+docker run -p 6900:8080 --name mws-bash mws-bash
