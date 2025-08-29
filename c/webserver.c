@@ -21,13 +21,13 @@ int create_socket(){
 }
 
 void bind_socket(int socket_fd){
-        struct sockaddr_in adress;
-        adress.sin_family = AF_INET;
-        adress.sin_addr.s_addr = htonl(INADDR_ANY);
-        adress.sin_port = htons(8080);
+        struct sockaddr_in address;
+        address.sin_family = AF_INET;
+        address.sin_addr.s_addr = htonl(INADDR_ANY);
+        address.sin_port = htons(8080);
         
         printf("Binding Socket...\n");
-        if(bind(socket_fd, (struct sockaddr *) &adress, sizeof(adress)) == -1)
+        if(bind(socket_fd, (struct sockaddr *) &address, sizeof(address)) == -1)
             error("Error binding Socket!");
 }
 
