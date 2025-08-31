@@ -1,5 +1,7 @@
 use std::net::{TcpListener, TcpStream, SocketAddr};
 use std::io::{Read,Write};
+use std::fs::File;
+use std::path::Path;
 
 fn bind_listener(adress:&str, port:&str) -> TcpListener {
     let full_adress = format!("{adress}:{port}"); 
@@ -21,12 +23,17 @@ fn handle_connection(con_info:(TcpStream, SocketAddr)){
     let buffer_string = str::from_utf8(&buffer).unwrap();
     println!("Request Length: {length}");
     println!("{buffer_string}");
-    let response = 
-        "HTTP/1.1 200 OK\r\ncontent-type: text/html\r\n\r\n<h1>Hello from Rust!</h1>\r\n".as_bytes();
-    let _ = stream.write(response);
+    let _ = stream.write("HTTP/1.1 200 OK\r\ncontent-type: text/html\r\n\r\n".as_bytes());
+    let mut file = File::open("index.html").unwrap();
+    let _ = std::io::copy(&mut file, &mut stream);
 }
 
 fn main(){
+    if !Path::new("index.html").exists()
+    {
+        println!("No index.html file found!");
+        std::process::exit(1);
+    }
     let adress = "0.0.0.0";
     let port = "8080";
     loop{

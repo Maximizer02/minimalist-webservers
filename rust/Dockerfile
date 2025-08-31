@@ -10,5 +10,6 @@ RUN apk add libgcc
 RUN mkdir /app
 WORKDIR /app
 COPY --from=build /build/webserver .
+COPY index.html .
 EXPOSE 8080
 ENTRYPOINT ["./webserver"]
