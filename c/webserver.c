@@ -3,9 +3,12 @@
 #include <stdio.h>
 #include <string.h>
 #include <sys/socket.h>
+#include <sys/sendfile.h>
+#include <fcntl.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <unistd.h>
+#include <sys/stat.h>
 
 void error(char *message){
         printf("%s\n\n", message);
@@ -47,12 +50,20 @@ void accept_connection(int socket_fd){
         read(connection_fd, buffer, sizeof(buffer));
         printf("%s\n", buffer);
  
-        char response[] = "HTTP/1.1 200 OK\r\ncontent-type: text/html\r\n\r\n<h1>Hello from C!</h1>\r\n";
+        char response[] = "HTTP/1.1 200 OK\r\ncontent-type: text/html\r\n\r\n";
         write(connection_fd, response, strlen(response));
+        int html_fd = open("index.html", O_RDONLY);
+        struct stat st;
+        fstat(html_fd, &st);
+        int html_count = st.st_size;
+        sendfile(connection_fd, html_fd, NULL, html_count);
         close(connection_fd);
+		close(html_fd);
 }
 
 int main(){
+        if(access("index.html", F_OK) != 0)
+            error("No index.html file found!");
         int socket_fd = create_socket();
         bind_socket(socket_fd);
         listen_socket(socket_fd);
