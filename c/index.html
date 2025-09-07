@@ -1,42 +1,27 @@
 <!DOCTYPE html>
-<head>
-		<title>Hello from C</title>
+<html>
+	<head>
+		<title>Hello World!</title>
 		<style>
-				body {
-						width: 50%;
-						margin:auto;
-				}
+			body {
+					width: 50%;
+					margin:auto;
+			}
 		</style>
-</head>
-<body>
-		<h1>Hello from C</h1>
+	</head>
+	<body>
+		<h1>Hello Minimalist Web Server!</h1>
 		<hr>
 		<p>
-				This page is being served from a web server written in pure C.
-				This is part of a small project for which I have written multiple, very minimalistic web servers in various languages.
-				If you have any of the other ones currently running, you can access them from here:
+			If you are seeing this, that means the web server is working correctly.
+			Congratulations!
+			Further information can be found in this projects's <a href="https://github.com/Maximizer02/minimalist-webservers">Github Repo</a>. 
 		</p>
+		<h3>List of all the webservers:</h3>
 		<ul>
-				<li>
-						<a href="http://localhost:6900">Web server written in Bash</a>
-
-				</li>
-				<li>
-						<a href="http://localhost:6902">Web server written in Rust</a>
-
-				</li>
+			<li><a href="http://localhost:6900">Web server written in Bash</a></li>
+			<li><a href="http://localhost:6901">Web server written in C</a></li>
+			<li><a href="http://localhost:6902">Web server written in Rust</a></li>
 		</ul>
-		<p>
-				But please be warned!
-				This project was built on the idea of <i>"How hard could it be to write a web server?"</i>
-				and not <i>"How can I create the best and most secure web server to ever exist?"</i>.
-				For all I know, there could be 100 very critical security flaws in there.
-				Therefore, I strongly advise you to <strong>not</strong> use this in <strong>any</strong> kind of production environment!
-		</p>
-		<p>
-				If you want to play around with any of the web servers, the source code for them can be found <a href="https://github.com/Maximizer02/minimalist-webservers">here</a>.
-				The only things you need to use them are Docker with a basic understanding of how to use it and a shell like Bash.
-				To serve your own customized content, just replace your chosen web server's "index.html" file with your own and rebuild the Docker image.
-		</p>
-</body>
-
+	</body>
+</html>
