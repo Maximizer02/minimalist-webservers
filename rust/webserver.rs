@@ -20,7 +20,7 @@ fn handle_connection(con_info:(TcpStream, SocketAddr)){
 
     let mut buffer :[u8;512] = [0;512];
     let length = stream.read(&mut buffer).unwrap();
-    let buffer_string = str::from_utf8(&buffer).unwrap();
+    let buffer_string = std::str::from_utf8(&buffer).unwrap();
     println!("Request Length: {length}");
     println!("{buffer_string}");
     let _ = stream.write("HTTP/1.1 200 OK\r\ncontent-type: text/html\r\n\r\n".as_bytes());
